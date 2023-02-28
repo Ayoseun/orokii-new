@@ -1,4 +1,4 @@
-export default class User {
+export default class Customer {
   id?: string;
   firstName!: string;
   lastName!: string;
@@ -9,10 +9,10 @@ export default class User {
   country!: any;
   dob!: string;
   email!: string;
-  phone!: any;
+  phone?: any;
   state!: string;
   zip!: string;
-  created_at!:any;
+  idVerified!:boolean;
   gender!: string;
   status!: string;
   kycStatus!: string;

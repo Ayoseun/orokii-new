@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './customers.service';
 import { map } from 'rxjs';
-import { User } from 'src/app/models/auth.models';
+
+import Customer from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-pages-contact',
@@ -9,7 +10,7 @@ import { User } from 'src/app/models/auth.models';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-  users: User[] = [];
+  users: Customer[] = [];
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -32,5 +33,9 @@ export class CustomersComponent implements OnInit {
 
     //console.log(tableData);
     //this.tableData = tableData;
+  }
+
+  viewUser =()=>{
+    
   }
 }
