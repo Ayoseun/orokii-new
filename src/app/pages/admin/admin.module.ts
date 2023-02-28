@@ -9,8 +9,9 @@ import { PagesBlankComponent } from './pages-blank/pages-blank.component';
 import { PagesContactComponent } from './pages-contact/pages-contact.component';
 import { PagesError404Component } from './pages-error404/pages-error404.component';
 import { PagesFaqComponent } from './pages-faq/pages-faq.component';
-
+import { TransactionComponent } from './transactions/transaction.component';
 import { UsersProfileComponent } from './users-profile/users-profile.component';
+import { CustomersComponent } from './customers/customers.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,10 @@ import { UsersProfileComponent } from './users-profile/users-profile.component';
     PagesContactComponent,
     PagesError404Component,
     PagesFaqComponent,
-     UsersProfileComponent,
-      DashboardComponent
+    UsersProfileComponent,
+    DashboardComponent,
+    TransactionComponent,
+    CustomersComponent
 
   ],
   imports: [

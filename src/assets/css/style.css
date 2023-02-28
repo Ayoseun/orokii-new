@@ -427,6 +427,22 @@
   .header-nav .nav-profile {
 	color: #012970;
   }
+
+  .header-nav .nav-balance{
+	color: #919191;
+	font-size: 14px;
+	font-weight: 300;
+  }
+  .header-nav .nav-balance h6{
+	color: #919191;
+	font-size: 14px;
+	font-weight: 300;
+  }
+  .header-nav .nav-balance p{
+	color: #012970;
+	font-size: 24px;
+	font-weight: 900;
+  }
   .header-nav .nav-profile img {
 	max-height: 36px;
   }
@@ -706,16 +722,16 @@
 	flex-shrink: 0;
 	flex-grow: 0;
   }
-  .dashboard .sales-card .card-icon {
+  .dashboard .customers-card .card-icon {
 	color: #4154f1;
 	background: #f6f6fe;
   }
-  .dashboard .revenue-card .card-icon {
+  .dashboard .sales-card .card-icon {
 	color: #2eca6a;
 	background: #e0f8e9;
   }
-  .dashboard .customers-card .card-icon {
-	color: #ff771d;
+  .dashboard .revenue-card .card-icon {
+	color: #df3805;
 	background: #ffecdf;
   }
   
@@ -1074,3 +1090,32 @@
 	text-align: center;
 	color: #012970;
 }
+
+  
+  /*--------------------------------------------------------------
+  # Transaction
+  --------------------------------------------------------------*/
+
+  .transaction{
+	margin: 10px;
+  }
+
+
+  /*--------------------------------------------------------------
+  # Table
+  --------------------------------------------------------------*/
+
+.table {
+	margin: 10px;
+}
+  .table td.table-body {
+	font-size: 14px;
+	font-weight: 400;
+	color: #2c384e;
+	margin: 10px 0 0 0;
+	max-width: 200px; /* adjust the value as needed */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+  

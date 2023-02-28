@@ -8,16 +8,19 @@ import { PagesError404Component } from './pages-error404/pages-error404.componen
 import { PagesFaqComponent } from './pages-faq/pages-faq.component';
 
 import { UsersProfileComponent } from './users-profile/users-profile.component';
+import { TransactionComponent } from './transactions/transaction.component';
+import { CustomersComponent } from './customers/customers.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent},
 
-  { path: 'admin/blank', component: PagesBlankComponent },
-  { path: 'admin/contact', component: PagesContactComponent },
-  { path: 'admin/error404', component: PagesError404Component },
-  { path: 'admin/faq', component: PagesFaqComponent },
+  { path: 'transaction', component: TransactionComponent },
+  { path: 'customers', component: CustomersComponent},
+  { path: 'contact', component: PagesContactComponent },
+  { path: 'error404', component: PagesError404Component },
+  { path: 'faq', component: PagesFaqComponent },
 
-  { path: 'admin/user-profile', component: UsersProfileComponent },
+  { path: 'user-profile', component: UsersProfileComponent },
 ];
 
 @NgModule({

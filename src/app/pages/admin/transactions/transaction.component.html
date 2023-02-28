@@ -1,0 +1,126 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Transactions</h1>
+  </div>
+  <section class="transaction">
+    <div class="transaction">
+      <div class="card">
+        <div class="card-body">
+          <ul
+            class="nav nav-tabs nav-tabs-bordered d-flex"
+            id="borderedTabJustified"
+            role="tablist"
+          >
+            <li class="nav-item flex-fill" role="presentation">
+              <button
+                class="nav-link w-100 active"
+                id="home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#bordered-justified-home"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                Deposit
+              </button>
+            </li>
+            <li class="nav-item flex-fill" role="presentation">
+              <button
+                class="nav-link w-100"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#bordered-justified-profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Withdrawals
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content pt-2" id="borderedTabJustifiedContent">
+            <div
+              class="tab-pane fade show active"
+              id="bordered-justified-home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <section class="section">
+                <div class="row">
+                  <div >
+                    <div class="card">
+                      <div class="card-body">
+                        <table class="table datatable">
+                          <thead>
+                            <tr >
+                              <th class="table-body">S/N</th>
+                              <th>Date</th>
+                              <th scope="col">First Name</th>
+
+                              <th scope="col">Email</th>
+                              <th scope="col">Phone</th>
+                              <th scope="col">Stellar Address</th>
+                              <th scope="col">Transaction Amount</th>
+                              <th scope="col">Fee</th>
+                              <th scope="col">Net Amount</th>
+
+                              <th>Transaction Type</th>
+
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody class="stellar-address">
+                            <tr
+                              *ngFor="
+                                let transaction of transactions;
+                                let i = index
+                              "
+                            >
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td class="table-body">
+                                {{
+                                  transaction.created_at.toMillis()
+                                    | date : "yyyy/MM/dd h:mm"
+                                }}
+                              </td>
+                              <td class="table-body">
+                                {{ transaction.firstName }}
+                                {{ transaction.lastName }}
+                              </td>
+                              <td class="table-body">{{ transaction.email }}</td>
+                              <td class="table-body">{{ transaction.phone }}</td>
+                              <td class="table-body">{{ transaction.stellar_address }}</td>
+                              <td class="table-body">{{ transaction.token_amount }}</td>
+                              <td class="table-body">{{ transaction.amount_fee }}</td>
+                              <td class="table-body">{{ transaction.amount_net }}</td>
+                              <td class="table-body">{{ transaction.transition_type }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
