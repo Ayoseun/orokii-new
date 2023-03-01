@@ -37,6 +37,7 @@ export class TransactionComponent implements OnInit {
      
             // Assume that you have received the data from API and stored it in a variable named 'data'
   this.transactions = data;
+ 
     });
 
     //console.log(tableData);

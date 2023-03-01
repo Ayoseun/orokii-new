@@ -24,7 +24,6 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit(): void {
     this._fetchData();
-    this.viewUser('8L8tLQKtlJfj7zf4zjXoTNLQFxS2');
   }
   _fetchData() {
 
@@ -36,7 +35,7 @@ export class CustomersComponent implements OnInit {
       )
     ).subscribe(data => {
       //this.tableData = data;
-      console.log(data)
+ 
       // Assume that you have received the data from API and stored it in a variable named 'data'
       this.users = data;
     });
@@ -46,21 +45,13 @@ export class CustomersComponent implements OnInit {
   }
 
 
-  viewUser = async (id: any) => {
-    //get user id snapshot from user data collection
-    const snapshot2 = await this.userService.getfacePhiDataCollection(id);
-    //sort through the data by user id
-    snapshot2.forEach((doc: any) => {
-      this.privateCollection = doc.data();
-      console.log(this.privateCollection);
-    });
-  }
 
 
   showInfo(index: number) {
     if (this.users.length > 0) {
       this.selectedUser = this.users[index];
-      this.router.navigate(['/admin/customer-details',{ message: this.users[index].id}]);
+      console.log(this.selectedUser.id)
+      this.router.navigate(['/admin/customer-details',{ id: this.selectedUser.id}]);
     }
   }
 
