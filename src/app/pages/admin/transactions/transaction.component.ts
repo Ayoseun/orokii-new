@@ -34,8 +34,7 @@ export class TransactionComponent implements OnInit {
         )
       )
     ).subscribe(data => {
-      //this.tableData = data;
-      console.log(data);
+     
             // Assume that you have received the data from API and stored it in a variable named 'data'
   this.transactions = data;
     });

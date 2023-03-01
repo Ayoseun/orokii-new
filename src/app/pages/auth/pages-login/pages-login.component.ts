@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
   login = () => {
-    console.log(this.f)
+   
     //Check that the user is a permitted account
     if (!environment.loginAllow.includes(this.f['email'].value)) {
       this.error = 'There is no user record corresponding to this identifier.';

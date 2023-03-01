@@ -32,6 +32,11 @@ export class UserService {
     return document;
   }
 
+  async getfacePhiDataCollection(id: string | undefined): Promise<any>{
+    let document = await this.db.collection('users').doc(id).collection('privateCollection').doc(id).collection('facePhiData').doc(id).get();
+    return document;
+  }
+
   create(user: User): any {
     return this.userRef.add({ ...user });
   }

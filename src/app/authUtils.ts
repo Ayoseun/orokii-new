@@ -37,8 +37,10 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.SetUserData(result.user);
+       
         this.afAuth.authState.subscribe((user) => {
           if (user) {
+            console.log(user)
             this.router.navigate(['/admin']);
           }
         });
@@ -56,6 +58,7 @@ export class AuthService {
         up and returns promise */
         this.SendVerificationMail();
         this.SetUserData(result.user);
+        console.log(result)
       })
       .catch((error) => {
         window.alert(error.message);
@@ -89,7 +92,7 @@ export class AuthService {
    // Returns true when user is looged in and email is verified
    get getData() {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? user : null;
+    return user;
   }
 
   // Sign in with Google
