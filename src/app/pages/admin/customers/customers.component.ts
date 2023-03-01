@@ -58,7 +58,7 @@ export class CustomersComponent implements OnInit {
   showInfo(index: number) {
     if (this.users.length > 0) {
       this.selectedUser = this.users[index];
-      this.router.navigate(['/admin/user-profile']);
+      this.router.navigate(['/admin/customer-details']);
     }
   }
 

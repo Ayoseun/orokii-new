@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { CustomerDetailsComponent } from './customers/customer-details/details-customer.component';
 import { PagesBlankComponent } from './pages-blank/pages-blank.component';
 import { PagesContactComponent } from './pages-contact/pages-contact.component';
 import { PagesError404Component } from './pages-error404/pages-error404.component';
@@ -23,8 +23,8 @@ import { CustomersComponent } from './customers/customers.component';
     UsersProfileComponent,
     DashboardComponent,
     TransactionComponent,
-    CustomersComponent
-
+    CustomersComponent,
+CustomerDetailsComponent
   ],
   imports: [
     CommonModule,
