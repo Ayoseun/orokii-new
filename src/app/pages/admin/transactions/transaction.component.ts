@@ -11,13 +11,14 @@ import { TransactionService } from './transaction.service';
 })
 export class TransactionComponent implements OnInit {
   transactions: Transaction[] = [];
-
+  searchTerm = '';
+  selectedTransaction: any;
   showTransactionType!:boolean;
   filteredTransactions: Transaction[] = [];
   constructor(private transactionService: TransactionService, private route: ActivatedRoute) {
        // initialize the filteredTransactions array with all transactions
-       this.filteredTransactions = this.transactions;
-       this. filterTransactions('All');
+       this.filteredTransactions = [];
+     
    }
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class TransactionComponent implements OnInit {
   }
 
 
+  
   filterTransactions(type: string) {
     if (type === 'All') {
       this.filteredTransactions = this.transactions;
@@ -53,4 +55,30 @@ export class TransactionComponent implements OnInit {
       this.filteredTransactions = this.transactions.filter(transaction => transaction.transition_type === type);
     }
   }
+
+
+  searchTransactions() {
+    if (this.searchTerm.trim() !== '') {
+      this.filteredTransactions = this.transactions.filter(
+        (transaction) =>
+          transaction.firstName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          transaction.lastName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          transaction.email.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          transaction.phone.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          transaction.stellar_address.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filterTransactions('All');
+    }
+  }
+
+
+
+  showIndex(index: number) {
+    if (this.transactions.length > 0) {
+      this.selectedTransaction = this.transactions[index];
+    }
+  }
+  
+  
 }

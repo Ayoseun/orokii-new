@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './customers.service';
 import { map } from 'rxjs';
-
+import { HttpClient } from "@angular/common/http";
 import Customer from 'src/app/models/user.model';
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
   selector: 'app-pages-contact',
@@ -11,10 +13,13 @@ import Customer from 'src/app/models/user.model';
 })
 export class CustomersComponent implements OnInit {
   users: Customer[] = [];
+  http!: HttpClient;
+  usdo: Number = 0;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this._fetchData();
+
   }
   _fetchData() {
 
@@ -26,7 +31,7 @@ export class CustomersComponent implements OnInit {
       )
     ).subscribe(data => {
       //this.tableData = data;
-      console.log(data);
+     
       // Assume that you have received the data from API and stored it in a variable named 'data'
       this.users = data;
     });
@@ -38,4 +43,6 @@ export class CustomersComponent implements OnInit {
   viewUser =()=>{
     
   }
+
+  
 }

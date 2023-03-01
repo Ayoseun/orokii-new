@@ -10,18 +10,28 @@ import { User } from 'src/app/models/auth.models';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  usdo: Number = 0;
-  constructor(@Inject(DOCUMENT) private document: Document,) { }
+  usdo!:string;
   http!: HttpClient;
-  authService!:AuthService;
-  user!: User;
+  constructor(@Inject(DOCUMENT) private document: Document,) { }
+
+
   ngOnInit() {
+   
+this.getBal()
+
+  }
+
+
+
+  getBal(){
+   
     const url = environment.horizonUrl + '/accounts/' + environment.assetInfo.distributor;
-    this.http.get(url).subscribe((res: any) => {
-      this.usdo = res['balances'][0]['balance'];
-    })
-
-
+    console.log(url);
+    fetch(url)
+    .then(response => response.json())
+    .then(data =>   this.usdo = parseFloat(data['balances'][0]['balance']).toFixed(2) )
+    .catch(error => console.error(error));
+  
   }
   sidebarToggle() {
     //toggle sidebar function

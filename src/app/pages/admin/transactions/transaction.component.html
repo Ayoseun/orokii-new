@@ -11,8 +11,10 @@
             class="form-control"
             placeholder="Search transactions"
             aria-label="Search transactions"
+            [(ngModel)]="searchTerm"
+
           />
-          <button class="btn btn-outline-secondary" type="button">
+          <button class="btn btn-outline-secondary" type="button" (click)="searchTransactions()">
             Search
           </button>
         </div>
@@ -134,17 +136,23 @@
                                 </th>
                               </tr>
                             </thead>
-                            <tbody class="stellar-address">
+                            <tbody class="tb">
                               <tr
-                                *ngFor="let transaction of filteredTransactions"
+                                *ngFor="let transaction of filteredTransactions; let i = index" (click)="showIndex(i)" data-bs-toggle="modal" data-bs-target="#largeModal" 
                               >
-                                <i
-                                  class="bi {{
-                                    transaction.transition_type == 'withdrawal'
-                                      ? 'bi-arrow-up-left-circle-fill icon-outbound'
-                                      : 'bi-arrow-down-left-circle-fill icon-inbound'
-                                  }} "
-                                ></i>
+
+
+                              
+                            <td>
+                              <i
+                              class="bi {{
+                                transaction.transition_type == 'withdrawal'
+                                  ? 'bi-arrow-up-left-circle-fill icon-outbound'
+                                  : 'bi-arrow-down-left-circle-fill icon-inbound'
+                              }} "
+                            ></i>
+                            </td>
+                                
                                 <td class="table-body">
                                   {{
                                     transaction.created_at.toMillis()
@@ -195,3 +203,218 @@
     </div>
   </section>
 </main>
+
+<div class="modal fade" id="largeModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Transaction Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section class="section">
+          <div class="row">
+             <div class="col-lg-6">
+                <div class="card">
+                   <div class="card-body">
+                      <h5 class="card-title">User Information</h5>
+                      <nav style="--bs-breadcrumb-divider: '>';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                          
+                        </ol>
+                     </nav>
+                     <nav style="--bs-breadcrumb-divider: '|';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.lastName}}</li>
+                       
+                        </ol>
+                     </nav>
+                     <nav style="--bs-breadcrumb-divider: '-';">
+                        <ol class="breadcrumb"><i class="bi bi-file-text"></i>
+                           <li *ngIf="showTransactionType"  class="breadcrumb-item">{{ selectedTransaction.phone}}</li>
+                         
+                        </ol>
+                     </nav>
+                     <nav style="--bs-breadcrumb-divider: '•';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.email}}</li>
+                         
+                        </ol>
+                     </nav>
+                     <nav style="--bs-breadcrumb-divider: '';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.id}}</li>
+                         
+                        </ol>
+                     </nav>
+                   </div>
+                </div>
+                <div class="card">
+                   <div class="card-body">
+                      <h5 class="card-title">Timeline</h5>
+                      <nav class="d-flex justify-content-center">
+                         <ol class="breadcrumb">
+                            <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                            <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                            <li *ngIf="showTransactionType" class="breadcrumb-item active">Centered Position</li>
+                         </ol>
+                      </nav>
+                   </div>
+                </div>
+                <div class="card">
+                   <div class="card-body">
+                      <h5 class="card-title">Payment Information</h5>
+                      <nav style="--bs-breadcrumb-divider: '>';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                          
+                        </ol>
+                     </nav>
+                     <nav style="--bs-breadcrumb-divider: '|';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                       
+                        </ol>
+                     </nav>
+                     <nav style="--bs-breadcrumb-divider: '-';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                         
+                        </ol>
+                     </nav>
+                     <nav style="--bs-breadcrumb-divider: '•';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                         
+                        </ol>
+                     </nav>
+                     <nav style="--bs-breadcrumb-divider: '';">
+                        <ol class="breadcrumb">
+                           <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                         
+                        </ol>
+                     </nav>
+                   </div>
+                </div>
+              
+             </div>
+             
+             <div class="col-lg-6">
+                <div class="card">
+                   <div class="card-body">
+                      <h5 class="card-title">Datas</h5>
+                      <div class="pagetitle">
+                       
+                         <nav style="--bs-breadcrumb-divider: '>';">
+                          <ol class="breadcrumb">
+                             <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                            
+                          </ol>
+                       </nav>
+                       <nav style="--bs-breadcrumb-divider: '|';">
+                          <ol class="breadcrumb">
+                             <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                         
+                          </ol>
+                       </nav>
+                       <nav style="--bs-breadcrumb-divider: '-';">
+                          <ol class="breadcrumb">
+                             <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                           
+                          </ol>
+                       </nav>
+                       <nav style="--bs-breadcrumb-divider: '•';">
+                          <ol class="breadcrumb">
+                             <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                           
+                          </ol>
+                       </nav>
+                       <nav style="--bs-breadcrumb-divider: '';">
+                          <ol class="breadcrumb">
+                             <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                           
+                          </ol>
+                       </nav>
+                      </div>
+                   </div>
+                </div>
+                <div class="card">
+                   <div class="card-body">
+                      <h5 class="card-title">Transaction Information</h5>
+                      <nav style="--bs-breadcrumb-divider: '>';">
+                         <ol class="breadcrumb">
+                            <li *ngIf="showTransactionType"class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                           
+                         </ol>
+                      </nav>
+                      <nav style="--bs-breadcrumb-divider: '|';">
+                         <ol class="breadcrumb">
+                            <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                        
+                         </ol>
+                      </nav>
+                      <nav style="--bs-breadcrumb-divider: '-';">
+                         <ol class="breadcrumb">
+                            <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                          
+                         </ol>
+                      </nav>
+                      <nav style="--bs-breadcrumb-divider: '•';">
+                         <ol class="breadcrumb">
+                            <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                          
+                         </ol>
+                      </nav>
+                      <nav style="--bs-breadcrumb-divider: '';">
+                         <ol class="breadcrumb">
+                            <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                          
+                         </ol>
+                      </nav>
+                   </div>
+                </div>
+             </div>
+             <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Blockchain Information</h5>
+                   <nav style="--bs-breadcrumb-divider: '>';">
+                     <ol class="breadcrumb">
+                        <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                       
+                     </ol>
+                  </nav>
+                  <nav style="--bs-breadcrumb-divider: '|';">
+                     <ol class="breadcrumb">
+                        <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                    
+                     </ol>
+                  </nav>
+                  <nav style="--bs-breadcrumb-divider: '-';">
+                     <ol class="breadcrumb">
+                        <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                      
+                     </ol>
+                  </nav>
+                  <nav style="--bs-breadcrumb-divider: '•';">
+                     <ol class="breadcrumb">
+                        <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                      
+                     </ol>
+                  </nav>
+                  <nav style="--bs-breadcrumb-divider: '';">
+                     <ol class="breadcrumb">
+                        <li *ngIf="showTransactionType" class="breadcrumb-item">{{selectedTransaction.firstName}}</li>
+                      
+                     </ol>
+                  </nav>
+                </div>
+             </div>
+             </div>
+          </div>
+       </section>
+      </div>
+    </div>
+  </div>
+</div>
