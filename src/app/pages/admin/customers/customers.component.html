@@ -58,7 +58,7 @@
                   <tbody>
                     <tr
                       onclick="viewUser()"
-                      *ngFor="let user of users; let i = index"
+                      *ngFor="let user of users; let i = index" (click)="showInfo(i)"
                     >
                       <th class="user-photo">
                         <img

@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import Customer from 'src/app/models/user.model';
 import { environment } from '../../../../environments/environment';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pages-contact',
@@ -13,10 +13,12 @@ import { environment } from '../../../../environments/environment';
 })
 export class CustomersComponent implements OnInit {
   users: Customer[] = [];
+  
   http!: HttpClient;
   usdo: Number = 0;
+  selectedUser: any;
   privateCollection: any;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,  public router: Router) { }
 
   ngOnInit(): void {
     this._fetchData();
@@ -40,9 +42,12 @@ export class CustomersComponent implements OnInit {
     //console.log(tableData);
     //this.tableData = tableData;
   }
-  viewUser = async (id: any) => {
-    const snapshot2 = await this.userService.getfacePhiDataCollection(id);
 
+
+  viewUser = async (id: any) => {
+    //get user id snapshot from user data collection
+    const snapshot2 = await this.userService.getfacePhiDataCollection(id);
+    //sort through the data by user id
     snapshot2.forEach((doc: any) => {
       this.privateCollection = doc.data();
       console.log(this.privateCollection);
@@ -50,5 +55,11 @@ export class CustomersComponent implements OnInit {
   }
 
 
+  showInfo(index: number) {
+    if (this.users.length > 0) {
+      this.selectedUser = this.users[index];
+      this.router.navigate(['/admin/user-profile']);
+    }
+  }
 
 }
