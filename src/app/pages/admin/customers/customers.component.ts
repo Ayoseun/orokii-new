@@ -18,7 +18,9 @@ export class CustomersComponent implements OnInit {
   usdo: Number = 0;
   selectedUser: any;
   privateCollection: any;
-  constructor(private userService: UserService,  public router: Router) { }
+  constructor(private userService: UserService,  public router: Router) { 
+    this._fetchData();
+  }
 
   ngOnInit(): void {
     this._fetchData();
@@ -58,7 +60,7 @@ export class CustomersComponent implements OnInit {
   showInfo(index: number) {
     if (this.users.length > 0) {
       this.selectedUser = this.users[index];
-      this.router.navigate(['/admin/customer-details']);
+      this.router.navigate(['/admin/customer-details',{ message: this.users[index].id}]);
     }
   }
 
