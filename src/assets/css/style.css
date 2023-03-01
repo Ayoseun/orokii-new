@@ -890,7 +890,7 @@
   .profile .profile-card .social-links a {
 	font-size: 20px;
 	display: inline-block;
-	color: rgba(1, 41, 112, 0.5);
+	color: #01297080;
 	line-height: 0;
 	margin-right: 10px;
 	transition: 0.3s;
@@ -1104,18 +1104,88 @@
   /*--------------------------------------------------------------
   # Table
   --------------------------------------------------------------*/
-
+.table th.user-photo{
+	min-width: 240px;
+	padding-bottom: 0;
+}
+.icon-inbound{
+	font-size: 2rem; 
+	color: #4154f1;
+  }
+.icon-outbound{
+	font-size: 2rem; 
+	color: #ed3c0d;
+  }
+  
 .table {
 	margin: 10px;
 }
   .table td.table-body {
 	font-size: 14px;
 	font-weight: 400;
-	color: #2c384e;
+	color: #012a70c7;
+	padding: 20px;
 	margin: 10px 0 0 0;
 	max-width: 200px; /* adjust the value as needed */
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+  
+
+.status-verified{
+	color: #148c42;
+	background: #e0f8e9;
+	font-weight: 500;
+}
+
+.status-invalid{
+	font-weight: 500;
+	color: #df0505;
+	background: #ffdfdf;
+}
+
+.search-trans {
+	background-color: #FFFFFF;
+	border: none;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+	padding: 5px;
+  }
+  
+  .search-trans:focus {
+	outline: none;
+	border: none;
+	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-trans input {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	font-size: 16px;
+	width: 100%;
+	padding: 5px 10px;
+  }
+  
+  .search-trans input::placeholder {
+	color: #B4B4B4;
+	font-weight: 100;
+  }
+  
+  .search-trans button {
+	background-color: #0077FF;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 15px;
+	font-size: 16px;
+	cursor: pointer;
+  }
+  
+  .search-trans button:hover {
+	background-color: #0054D4;
+  }
   

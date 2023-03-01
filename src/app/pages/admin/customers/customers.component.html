@@ -6,11 +6,8 @@
     <div class="row">
       <div class="col-lg-0">
         <div class="row">
-          <div class="col-xxl-8 col-md-5">
-          
-          </div>
-        
-          
+          <div class="col-xxl-8 col-md-5"></div>
+
           <div class="col-12">
             <div class="card recent-sales overflow-auto">
               <div class="filter">
@@ -26,7 +23,6 @@
                   <li><a class="dropdown-item" href="#">This Year</a></li>
                 </ul>
               </div>
-             
             </div>
           </div>
           <div class="col-12">
@@ -49,37 +45,45 @@
                 <table class="table table-borderless">
                   <thead>
                     <tr>
-                      <th >Preview</th>
-                      <th >Full Name</th>
-                     
-                       <th >Email</th>
-                       <th >Phone</th>
-                       <th >Country</th>
-                       <th >Status</th>
-                       <th >Wallet Address</th>
+                      <th>Preview</th>
+                      <th>Full Name</th>
+
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Country</th>
+                      <th>Status</th>
+                      <th>Wallet Address</th>
                     </tr>
                   </thead>
                   <tbody>
-                   
-                    <tr onclick="viewUser()" *ngFor="
-                    let user of users;
-                    let i = index
-                  "
-                >
-                      <th scope="row">
-                        <img src="assets/img/admin.png" alt=""
+                    <tr
+                      onclick="viewUser()"
+                      *ngFor="let user of users; let i = index"
+                    >
+                      <th class="user-photo">
+                        <img
+                          class="rounded-circle"
+                          src="assets/img/admin.png"
+                          alt=""
                         />
                       </th>
-                      <td>
-                        <a href="#" class="text-primary fw-bold"
-                          >{{user.firstName}}  {{ user.lastName }}</a
-                        >
+                      <td class="table-body">
+                        {{ user.firstName }} {{ user.lastName }}
                       </td>
-                      <td>{{user.email}}</td>
-                      <td class="fw-bold">{{user.phone}}</td>
-                      <td>{{user.country}}</td>
-                      <td>{{user.idVerified ? 'Verified' : 'Not Verified'}}</td>
-                      <td class="table-body">{{user.stellar_address}}</td>
+                      <td class="table-body">{{ user.email }}</td>
+                      <td class="table-body">{{ user.phone }}</td>
+                      <td class="table-body">{{ user.country }}</td>
+                      <td class="table-body">
+                        <span
+                          class="badge {{
+                            user.idVerified ? 'status-verified' : 'status-invalid'
+                          }}"
+                        >
+                          {{ user.idVerified ? "Verified" : "Not Verified" }}
+                        </span>
+                      </td>
+
+                      <td class="table-body">{{ user.stellar_address }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -88,7 +92,6 @@
           </div>
         </div>
       </div>
-    
     </div>
   </section>
 </main>

@@ -12,12 +12,17 @@ import { TransactionService } from './transaction.service';
 export class TransactionComponent implements OnInit {
   transactions: Transaction[] = [];
 
-  
-  constructor(private transactionService: TransactionService, private route: ActivatedRoute) { }
+  showTransactionType!:boolean;
+  filteredTransactions: Transaction[] = [];
+  constructor(private transactionService: TransactionService, private route: ActivatedRoute) {
+       // initialize the filteredTransactions array with all transactions
+       this.filteredTransactions = this.transactions;
+       this. filterTransactions('All');
+   }
 
   ngOnInit(): void {
     this._fetchData();
-
+   this. filterTransactions('All');
   }
   _fetchData() {
 
@@ -36,5 +41,16 @@ export class TransactionComponent implements OnInit {
 
     //console.log(tableData);
     //this.tableData = tableData;
+  }
+
+
+  filterTransactions(type: string) {
+    if (type === 'All') {
+      this.filteredTransactions = this.transactions;
+    } else {
+  
+      // filter transactions based on their type
+      this.filteredTransactions = this.transactions.filter(transaction => transaction.transition_type === type);
+    }
   }
 }
